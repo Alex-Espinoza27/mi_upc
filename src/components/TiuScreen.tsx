@@ -55,7 +55,7 @@ export const TiuScreen: React.FC<TiuScreenProps> = ({ profile, onBack }) => {
           Imagen de campus (SIN rostro) colocada detrás del card blanco,
           emergiendo desde el nivel del card hacia arriba 
         */}
-        <div className="absolute bottom-[200px] left-0 right-0 h-[220px] flex items-end justify-center opacity-85">
+        <div className="absolute bottom-[230px] left-0 right-0 h-[220px] flex items-end justify-center opacity-85">
           <img
             src={`${import.meta.env.BASE_URL}assets/campus-bg.png`}
             alt="Campus UPC"
@@ -82,16 +82,16 @@ export const TiuScreen: React.FC<TiuScreenProps> = ({ profile, onBack }) => {
       </div>
 
       {/* Reloj y Alumno */}
-      <div className="relative z-20 flex-1 flex flex-col items-center justify-start px-[18px] pt-2">
+      <div className="relative z-20 flex-1 flex flex-col items-center justify-center px-[18px] pt-1">
         {/* Digital Clock Box: color lila/lavanda suave, números con grosor moderado/limpio */}
-        <div className="w-full max-w-[270px] bg-[#E1E5FE] rounded-2xl py-3 px-6 text-center shadow-sm border border-[#D0D7FC] mt-2 mb-2">
+        <div className="w-full max-w-[270px] bg-[#E1E5FE] rounded-2xl py-3 px-6 text-center shadow-sm border border-[#D0D7FC] mt-1 mb-2">
           <div className="font-clock font-medium text-[36px] text-[#000000] tracking-wider leading-none">
             {timeStr || '22:14:44'}
           </div>
         </div>
 
-        {/* Fecha con más margen hacia la foto */}
-        <p className="text-[#6D7687] text-[15px] font-medium tracking-normal mt-1 mb-8">
+        {/* Fecha con buen margen hacia la foto */}
+        <p className="text-[#6D7687] text-[15px] font-medium tracking-normal mt-1 mb-6">
           {dateStr || 'Lunes, 12 Oct 2026'}
         </p>
 
@@ -101,7 +101,7 @@ export const TiuScreen: React.FC<TiuScreenProps> = ({ profile, onBack }) => {
           - SIN bordes blancos ni márgenes
           - SIN icono de check verde
         */}
-        <div className="relative mb-5 z-20">
+        <div className="relative mb-4 z-20">
           <div className="w-[108px] h-[108px] rounded-full overflow-hidden shadow-[0_8px_24px_rgba(30,40,80,0.18)] bg-transparent">
             <img
               src={profile.avatarUrl}
@@ -113,12 +113,11 @@ export const TiuScreen: React.FC<TiuScreenProps> = ({ profile, onBack }) => {
 
         {/* 
           Card blanco de datos del alumno:
-          - Bajado más hacia abajo
-          - Nombre en letras más grandes pero con trazo más delgado (font-normal / font-medium display)
-          - Textos oscuros en "Código de alumno", "ID Banner", "Campus Villa" con margen reducido a sus valores
+          - Elevado más arriba (sin mt-auto) con bordes redondeados y espacio inferior
+          - Nombre en letras grandes y elegantes
         */}
-        <div className="w-full bg-[#FFFFFF] rounded-t-[28px] rounded-b-[20px] p-[22px] pt-6 shadow-[0_4px_16px_rgba(30,40,80,0.08)] border border-[#D6D9E2]/40 text-center space-y-2 mt-auto mb-2 z-20">
-          {/* Nombre: grande, alargado y con grosor delgado como en IMAGEN 1 */}
+        <div className="w-full bg-[#FFFFFF] rounded-[24px] p-[22px] pt-5 shadow-[0_4px_16px_rgba(30,40,80,0.08)] border border-[#D6D9E2]/40 text-center space-y-2 mt-1 mb-7 z-20">
+          {/* Nombre: grande, alargado y con grosor fino */}
           <h2 className="display font-normal text-[32px] text-[#E40A18] uppercase leading-tight tracking-wide">
             {profile.maskedName}
           </h2>
