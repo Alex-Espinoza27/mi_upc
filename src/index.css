@@ -1,22 +1,62 @@
 @import "tailwindcss";
 
+:root {
+  --red-primary: #E40A18;
+  --red-text: #D3101E;
+  --purple: #34158C;
+  --link: #3F2E9E;
+  --link-icon: #2E0EC5;
+  --bg-app: #F9FAFE;
+  --surface: #FFFFFF;
+  --text-title: #000000;
+  --text-secondary: #4A5364;
+  --text-tertiary: #6D7687;
+  --chip-bg: #E6EDF3;
+  --chip-text: #545E6A;
+  --badge-green-bg: #B6FFB3;
+  --badge-green-text: #22661D;
+  --dot-inactive: #CCD9EC;
+  --icon-muted: #A5B3CD;
+  --divider: #D6D9E2;
+  --illustration: #B6C0F6;
+  --on-dark: #FFFFFF;
+}
+
 @theme {
-  --font-condensed: 'Barlow Condensed', sans-serif;
+  --font-display: 'Bebas Neue', 'Oswald', sans-serif;
+  --font-body: 'Roboto', sans-serif;
   --font-mono: 'Roboto Mono', monospace;
-  --color-upc-red: #E30613;
-  --color-upc-red-dark: #C2040F;
-  --color-upc-blue-bg: #F5F7FC;
+  
+  --color-red-primary: #E40A18;
+  --color-red-text: #D3101E;
+  --color-purple: #34158C;
+  --color-link: #3F2E9E;
+  --color-link-icon: #2E0EC5;
+  --color-bg-app: #F9FAFE;
+  --color-surface: #FFFFFF;
+  --color-text-title: #000000;
+  --color-text-secondary: #4A5364;
+  --color-text-tertiary: #6D7687;
+  --color-chip-bg: #E6EDF3;
+  --color-chip-text: #545E6A;
+  --color-badge-green-bg: #B6FFB3;
+  --color-badge-green-text: #22661D;
+  --color-dot-inactive: #CCD9EC;
+  --color-icon-muted: #A5B3CD;
+  --color-divider: #D6D9E2;
+  --color-illustration: #B6C0F6;
 }
 
 @layer base {
   * {
     -webkit-tap-highlight-color: transparent;
+    box-sizing: border-box;
   }
 
   body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    background-color: #F6F7FA;
-    color: #1A1F2C;
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--bg-app);
+    color: var(--text-secondary);
     margin: 0;
     padding: 0;
     min-height: 100vh;
@@ -25,16 +65,42 @@
   }
 }
 
-.font-condensed {
-  font-family: 'Barlow Condensed', sans-serif;
-  letter-spacing: 0.02em;
+.display {
+  font-family: 'Bebas Neue', 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+}
+
+.font-body {
+  font-family: 'Roboto', sans-serif;
 }
 
 .font-clock {
   font-family: 'Roboto Mono', monospace;
 }
 
-/* Hide scrollbar for clean app carousel look */
+/* Card standard from specification */
+.card-standard {
+  background-color: var(--surface);
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(30, 40, 80, 0.12);
+  margin-left: 18px;
+  margin-right: 18px;
+  padding: 18px;
+}
+
+/* Featured Purple Card */
+.card-featured {
+  background-color: var(--purple);
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(30, 40, 80, 0.12);
+  margin-left: 18px;
+  margin-right: 18px;
+  padding: 18px;
+  color: #FFFFFF;
+}
+
+/* Hide scrollbars */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
@@ -43,10 +109,6 @@
   scrollbar-width: none;
 }
 
-/* Safe areas for iOS */
 .safe-bottom {
   padding-bottom: max(16px, env(safe-area-inset-bottom));
-}
-.safe-top {
-  padding-top: max(12px, env(safe-area-inset-top));
 }

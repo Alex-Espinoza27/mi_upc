@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Bell, ChevronRight, ChevronDown, MinusCircle, BookOpen, FileText, CreditCard, Globe, Sparkles } from 'lucide-react';
+import { Bell, ChevronRight, ChevronDown, Sparkles, MessageCircleHeart } from 'lucide-react';
 import { UpcHeaderLogo } from './UpcLogo';
 import { StudentProfile } from '../types';
-import { COURSES } from '../data/mockData';
+import { COURSES, SERVICES } from '../data/mockData';
 
 interface HomeScreenProps {
   profile: StudentProfile;
@@ -31,28 +31,30 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ profile, onOpenTiu }) =>
   const currentCourse = COURSES[currentCourseIndex] || COURSES[0];
 
   return (
-    <div className="min-h-screen bg-[#F6F7FA] pb-24 max-w-md mx-auto">
+    <div className="min-h-screen bg-[#F9FAFE] pb-28 max-w-md mx-auto">
       {/* Top Header */}
-      <header className="px-5 pt-3 pb-2 flex items-center justify-between">
+      <header className="px-[18px] pt-3 pb-2 flex items-center justify-between">
         <UpcHeaderLogo />
         <button
           className="relative p-2 rounded-full hover:bg-gray-100 transition-colors cursor-pointer"
           aria-label="Notificaciones"
         >
-          <Bell className="w-6 h-6 text-[#1A1F2C]" />
-          <span className="absolute top-1.5 right-1.5 w-2.5 h-2.5 bg-[#E30613] rounded-full border-2 border-white" />
+          <Bell className="w-6 h-6 text-[#000000]" />
+          <span className="absolute top-1.5 right-1.5 w-2.5 h-2.5 bg-[#E40A18] rounded-full border-2 border-white" />
         </button>
       </header>
 
       {/* Greeting Banner */}
-      <section className="px-5 pt-3 pb-4">
+      <section className="px-[18px] pt-3 pb-4">
         <div className="flex items-center justify-between">
           <div>
-            <h2 className="text-[#E30613] text-xl font-medium tracking-tight">Hola,</h2>
-            <h1 className="text-[#E30613] text-3xl font-condensed font-extrabold uppercase tracking-tight -mt-1">
-              {profile.name}
-            </h1>
-            <p className="text-[#6C7280] text-sm mt-0.5 font-normal">¡Te damos la bienvenida!</p>
+            <div className="text-[22px] leading-tight">
+              <span className="font-normal text-[#D3101E]">Hola, </span>
+              <span className="font-bold text-[#D3101E]">{profile.name}</span>
+            </div>
+            <p className="text-[15px] font-normal text-[#4A5364] mt-1 leading-snug">
+              ¡Te damos la bienvenida!
+            </p>
           </div>
           <div className="relative w-28 h-20 flex-shrink-0">
             <img
@@ -60,7 +62,6 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ profile, onOpenTiu }) =>
               alt="Estudiantes UPC"
               className="w-full h-full object-contain"
               onError={(e) => {
-                // Fallback SVG illustration if image fails
                 (e.target as HTMLElement).style.display = 'none';
               }}
             />
@@ -69,48 +70,49 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ profile, onOpenTiu }) =>
       </section>
 
       {/* Main Content Area */}
-      <main className="px-4 space-y-4">
+      <main className="space-y-4">
         {/* HORARIOS Card */}
-        <section className="bg-white rounded-3xl p-5 shadow-[0_4px_24px_rgba(0,0,0,0.04)] border border-gray-50">
+        <section className="card-standard">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 flex items-center justify-center">
+              <div className="w-[38px] h-[38px] flex items-center justify-center flex-shrink-0">
                 <img
                   src={`${import.meta.env.BASE_URL}assets/clock-icon.png`}
                   alt="Reloj"
-                  className="w-8 h-8 object-contain"
+                  className="w-full h-full object-contain"
                   onError={(e) => {
                     (e.target as HTMLElement).style.display = 'none';
                   }}
                 />
               </div>
-              <h3 className="font-condensed font-extrabold text-2xl tracking-wide text-[#1A1F2C]">
+              <h3 className="display font-extrabold text-[28px] text-[#000000] leading-none">
                 HORARIOS
               </h3>
             </div>
-            <button className="text-[#1A56DB] text-sm font-semibold flex items-center gap-0.5 hover:underline cursor-pointer">
-              Ver todo <ChevronRight className="w-4 h-4 stroke-[2.5]" />
+            <button className="text-[15px] font-semibold text-[#3F2E9E] flex items-center gap-1 hover:underline cursor-pointer">
+              <span>Ver todo</span>
+              <ChevronRight className="w-4 h-4 text-[#2E0EC5] stroke-[2.8]" />
             </button>
           </div>
 
-          {/* Day Pills */}
-          <div className="grid grid-cols-2 gap-2.5 mb-6">
+          {/* Date Pills */}
+          <div className="grid grid-cols-2 gap-2.5 mb-5">
             <button
               onClick={() => setSelectedDay('today')}
-              className={`py-2 px-3 rounded-full text-xs font-semibold transition-all cursor-pointer ${
+              className={`py-2 px-3 rounded-full text-[13px] font-bold transition-all cursor-pointer text-center leading-normal ${
                 selectedDay === 'today'
-                  ? 'bg-[#E30613] text-white shadow-sm'
-                  : 'bg-white border border-[#E30613] text-[#E30613]'
+                  ? 'bg-[#E40A18] text-[#FFFFFF] shadow-sm'
+                  : 'bg-white border border-[#E40A18] text-[#D3101E]'
               }`}
             >
               Hoy {formatDayPill(today)}
             </button>
             <button
               onClick={() => setSelectedDay('tomorrow')}
-              className={`py-2 px-3 rounded-full text-xs font-semibold transition-all cursor-pointer ${
+              className={`py-2 px-3 rounded-full text-[13px] font-bold transition-all cursor-pointer text-center leading-normal ${
                 selectedDay === 'tomorrow'
-                  ? 'bg-[#E30613] text-white shadow-sm'
-                  : 'bg-white border border-[#E30613] text-[#E30613]'
+                  ? 'bg-[#E40A18] text-[#FFFFFF] shadow-sm'
+                  : 'bg-white border border-[#E40A18] text-[#D3101E]'
               }`}
             >
               Mañana {formatDayPill(tomorrow)}
@@ -119,79 +121,84 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ profile, onOpenTiu }) =>
 
           {/* Empty State */}
           <div className="flex flex-col items-center justify-center py-6 text-center">
-            <div className="w-10 h-10 rounded-full bg-[#9CA3AF]/20 flex items-center justify-center mb-3">
-              <span className="w-4 h-1 bg-[#838B9B] rounded-full" />
+            <div className="w-10 h-10 rounded-full bg-[#A5B3CD] flex items-center justify-center mb-2.5">
+              <span className="w-4 h-[2px] bg-white rounded-full" />
             </div>
-            <p className="text-[#64748B] text-sm font-medium">No tienes clases en el día</p>
+            <p className="text-[#6D7687] text-[14px] font-medium">
+              No tienes clases en el día
+            </p>
           </div>
         </section>
 
         {/* CURSOS Card */}
-        <section className="bg-white rounded-3xl p-5 shadow-[0_4px_24px_rgba(0,0,0,0.04)] border border-gray-50">
+        <section className="card-standard">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 flex items-center justify-center">
+              <div className="w-[38px] h-[38px] flex items-center justify-center flex-shrink-0">
                 <img
                   src={`${import.meta.env.BASE_URL}assets/books-icon.png`}
                   alt="Cursos"
-                  className="w-8 h-8 object-contain"
+                  className="w-full h-full object-contain"
                   onError={(e) => {
                     (e.target as HTMLElement).style.display = 'none';
                   }}
                 />
               </div>
-              <h3 className="font-condensed font-extrabold text-2xl tracking-wide text-[#1A1F2C]">
+              <h3 className="display font-extrabold text-[28px] text-[#000000] leading-none">
                 CURSOS
               </h3>
             </div>
-            <button className="text-[#1A56DB] text-sm font-semibold flex items-center gap-0.5 hover:underline cursor-pointer">
-              Ver todos <ChevronRight className="w-4 h-4 stroke-[2.5]" />
+            <button className="text-[15px] font-semibold text-[#3F2E9E] flex items-center gap-1 hover:underline cursor-pointer">
+              <span>Ver todos</span>
+              <ChevronRight className="w-4 h-4 text-[#2E0EC5] stroke-[2.8]" />
             </button>
           </div>
 
           {/* Course Details Card */}
-          <div className="py-2">
-            <h4 className="text-[#1A1F2C] font-bold text-base tracking-tight mb-2">
+          <div className="pt-1 pb-2">
+            <h4 className="text-[16px] font-bold text-[#4A5364] leading-snug mb-2">
               {currentCourse.name}
             </h4>
+
+            {/* Badge VIRTUAL */}
             <div className="flex items-center gap-2 mb-3">
-              <span className="inline-block bg-[#DCFCE7] text-[#15803D] text-[10px] font-extrabold uppercase px-2 py-0.5 rounded tracking-wide">
+              <span className="inline-block bg-[#B6FFB3] text-[#22661D] display text-[12px] uppercase px-2 py-0.5 rounded-[4px] font-extrabold tracking-wider">
                 {currentCourse.modality}
               </span>
             </div>
 
-            {/* Expandable detail */}
-            <div className="border-t border-gray-50 pt-2">
+            {/* Expandable detail link */}
+            <div className="border-t border-[#D6D9E2]/50 pt-2.5">
               <button
                 onClick={() => setExpandedCourse(!expandedCourse)}
-                className="text-[#3B62C6] text-xs font-medium flex items-center justify-center w-full gap-1 py-1 hover:underline cursor-pointer"
+                className="text-[15px] font-semibold text-[#3F2E9E] flex items-center justify-center w-full gap-1 py-1 hover:underline cursor-pointer"
               >
-                Ver más detalle
+                <span>Ver más detalle</span>
                 <ChevronDown
-                  className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                  className={`w-4 h-4 text-[#2E0EC5] stroke-[2.8] transition-transform duration-200 ${
                     expandedCourse ? 'rotate-180' : ''
                   }`}
                 />
               </button>
 
               {expandedCourse && (
-                <div className="mt-3 p-3 bg-[#F8FAFC] rounded-2xl text-xs space-y-1.5 text-gray-600 animate-fadeIn">
-                  <p><strong className="text-gray-800">Nombre completo:</strong> {currentCourse.fullName}</p>
-                  <p><strong className="text-gray-800">Código / Sección:</strong> {currentCourse.code} - {currentCourse.section}</p>
-                  <p><strong className="text-gray-800">Docente:</strong> {currentCourse.teacher}</p>
-                  <p><strong className="text-gray-800">Aula:</strong> {currentCourse.classroom}</p>
+                <div className="mt-3 p-3.5 bg-[#F9FAFE] border border-[#D6D9E2]/60 rounded-xl text-[14px] space-y-1.5 text-[#4A5364] animate-fadeIn">
+                  <p><strong className="text-[#000000]">Nombre completo:</strong> {currentCourse.fullName}</p>
+                  <p><strong className="text-[#000000]">Código / Sección:</strong> {currentCourse.code} - {currentCourse.section}</p>
+                  <p><strong className="text-[#000000]">Docente:</strong> {currentCourse.teacher}</p>
+                  <p><strong className="text-[#000000]">Aula:</strong> {currentCourse.classroom}</p>
                 </div>
               )}
             </div>
 
             {/* Carousel Dots */}
-            <div className="flex items-center justify-center gap-1.5 mt-4">
+            <div className="flex items-center justify-center gap-[8px] mt-4">
               {COURSES.map((_, idx) => (
                 <button
                   key={idx}
                   onClick={() => setCurrentCourseIndex(idx)}
-                  className={`w-2 h-2 rounded-full transition-all cursor-pointer ${
-                    currentCourseIndex === idx ? 'bg-[#E30613] w-2.5' : 'bg-[#D0D7E5]'
+                  className={`w-[9px] h-[9px] rounded-full transition-all cursor-pointer ${
+                    currentCourseIndex === idx ? 'bg-[#E40A18]' : 'bg-[#CCD9EC]'
                   }`}
                   aria-label={`Ver curso ${idx + 1}`}
                 />
@@ -200,61 +207,84 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ profile, onOpenTiu }) =>
           </div>
         </section>
 
-        {/* Quick TIU Banner Shortcut */}
-        <div
-          onClick={onOpenTiu}
-          className="bg-gradient-to-r from-[#1E293B] to-[#0F172A] text-white rounded-2xl p-4 flex items-center justify-between shadow-md cursor-pointer active:scale-[0.98] transition-transform"
-        >
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center">
-              <Sparkles className="w-5 h-5 text-yellow-300" />
+        {/* Featured Card (Purple card from spec) */}
+        <section className="card-featured flex items-center justify-between cursor-pointer active:scale-[0.99] transition-transform">
+          <div className="flex items-center gap-3.5">
+            <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-white">
+              <MessageCircleHeart className="w-5 h-5" />
             </div>
             <div>
-              <p className="font-condensed font-bold text-lg leading-tight">TIU VIRTUAL ACTIVO</p>
-              <p className="text-xs text-gray-300">Toca para abrir tu Carnet Universitario</p>
+              <h4 className="display font-extrabold text-[18px] text-white tracking-wide uppercase leading-tight">
+                COMPARTE TU EXPERIENCIA
+              </h4>
+              <p className="text-[14px] text-white/80 font-normal mt-0.5">
+                Ayúdanos a seguir mejorando tu app Mi UPC
+              </p>
             </div>
           </div>
-          <ChevronRight className="w-5 h-5 text-gray-300" />
+          <ChevronRight className="w-5 h-5 text-[#E40A18] stroke-[3] flex-shrink-0" />
+        </section>
+
+        {/* TIU Virtual Shortcut Card */}
+        <div
+          onClick={onOpenTiu}
+          className="card-standard flex items-center justify-between cursor-pointer active:scale-[0.99] transition-transform hover:shadow-md"
+        >
+          <div className="flex items-center gap-3.5">
+            <div className="w-10 h-10 rounded-xl bg-red-50 flex items-center justify-center text-[#E40A18]">
+              <Sparkles className="w-5 h-5" />
+            </div>
+            <div>
+              <p className="display font-extrabold text-[18px] text-[#000000] tracking-wide uppercase leading-tight">
+                TIU VIRTUAL
+              </p>
+              <p className="text-[14px] text-[#4A5364] mt-0.5">
+                Toca para abrir tu Carnet Universitario
+              </p>
+            </div>
+          </div>
+          <ChevronRight className="w-5 h-5 text-[#E40A18] stroke-[3]" />
         </div>
 
         {/* MIS SERVICIOS Section */}
-        <section className="pt-2">
-          <div className="flex items-center justify-between mb-3 px-1">
-            <h3 className="font-condensed font-extrabold text-2xl tracking-wide text-[#1A1F2C]">
+        <section className="px-[18px] pt-1">
+          <div className="flex items-center justify-between mb-3">
+            <h3 className="display font-extrabold text-[28px] text-[#000000] leading-none">
               MIS SERVICIOS
             </h3>
-            <button className="text-[#1A56DB] text-sm font-semibold flex items-center gap-0.5 hover:underline cursor-pointer">
-              Ver todos <ChevronRight className="w-4 h-4 stroke-[2.5]" />
+            <button className="text-[15px] font-semibold text-[#3F2E9E] flex items-center gap-1 hover:underline cursor-pointer">
+              <span>Ver todos</span>
+              <ChevronRight className="w-4 h-4 text-[#2E0EC5] stroke-[2.8]" />
             </button>
           </div>
 
           <div className="grid grid-cols-4 gap-2.5">
-            <div className="bg-white rounded-2xl p-3 shadow-sm border border-gray-100 flex flex-col items-center justify-center text-center cursor-pointer active:scale-95 transition-transform">
-              <div className="w-10 h-10 rounded-full bg-red-50 flex items-center justify-center text-[#E30613] mb-1.5">
-                <FileText className="w-5 h-5" />
+            <div className="bg-white rounded-[16px] p-3 shadow-[0_2px_8px_rgba(30,40,80,0.12)] flex flex-col items-center justify-center text-center cursor-pointer active:scale-95 transition-transform">
+              <div className="w-10 h-10 rounded-full bg-red-50 flex items-center justify-center text-[#E40A18] mb-1.5 font-bold">
+                📄
               </div>
-              <span className="text-[11px] font-medium text-gray-700">Trámites</span>
+              <span className="text-[13px] font-medium text-[#4A5364]">Trámites</span>
             </div>
 
-            <div className="bg-white rounded-2xl p-3 shadow-sm border border-gray-100 flex flex-col items-center justify-center text-center cursor-pointer active:scale-95 transition-transform">
-              <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-[#1A56DB] mb-1.5">
-                <BookOpen className="w-5 h-5" />
+            <div className="bg-white rounded-[16px] p-3 shadow-[0_2px_8px_rgba(30,40,80,0.12)] flex flex-col items-center justify-center text-center cursor-pointer active:scale-95 transition-transform">
+              <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-[#3F2E9E] mb-1.5 font-bold">
+                📚
               </div>
-              <span className="text-[11px] font-medium text-gray-700">Biblioteca</span>
+              <span className="text-[13px] font-medium text-[#4A5364]">Biblioteca</span>
             </div>
 
-            <div className="bg-white rounded-2xl p-3 shadow-sm border border-gray-100 flex flex-col items-center justify-center text-center cursor-pointer active:scale-95 transition-transform">
-              <div className="w-10 h-10 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-600 mb-1.5">
-                <CreditCard className="w-5 h-5" />
+            <div className="bg-white rounded-[16px] p-3 shadow-[0_2px_8px_rgba(30,40,80,0.12)] flex flex-col items-center justify-center text-center cursor-pointer active:scale-95 transition-transform">
+              <div className="w-10 h-10 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-600 mb-1.5 font-bold">
+                💳
               </div>
-              <span className="text-[11px] font-medium text-gray-700">Pagos UPC</span>
+              <span className="text-[13px] font-medium text-[#4A5364]">Pagos UPC</span>
             </div>
 
-            <div className="bg-white rounded-2xl p-3 shadow-sm border border-gray-100 flex flex-col items-center justify-center text-center cursor-pointer active:scale-95 transition-transform">
-              <div className="w-10 h-10 rounded-full bg-purple-50 flex items-center justify-center text-purple-600 mb-1.5">
-                <Globe className="w-5 h-5" />
+            <div className="bg-white rounded-[16px] p-3 shadow-[0_2px_8px_rgba(30,40,80,0.12)] flex flex-col items-center justify-center text-center cursor-pointer active:scale-95 transition-transform">
+              <div className="w-10 h-10 rounded-full bg-purple-50 flex items-center justify-center text-purple-600 mb-1.5 font-bold">
+                🌐
               </div>
-              <span className="text-[11px] font-medium text-gray-700">Intranet</span>
+              <span className="text-[13px] font-medium text-[#4A5364]">Intranet</span>
             </div>
           </div>
         </section>
