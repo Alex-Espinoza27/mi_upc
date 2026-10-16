@@ -5,7 +5,7 @@ export const PROFILES: StudentProfile[] = [
     id: 'clinton',
     name: 'Clinton Alex',
     maskedName: 'CLINTON ALEX E*** V***',
-    studentCode: '202120751',
+    studentCode: 'U202120751',
     bannerId: 'N03885376',
     career: 'ING. SISTEMAS DE INFORMACIÓN',
     campus: 'Campus Villa',

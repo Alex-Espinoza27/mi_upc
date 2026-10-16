@@ -29,7 +29,7 @@ export function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F6F7FA] text-[#1A1F2C] flex flex-col justify-between max-w-md mx-auto shadow-2xl relative font-sans overflow-x-hidden">
+    <div className="min-h-screen bg-[#F9FAFE] text-[#1A1F2C] flex flex-col justify-between max-w-md mx-auto shadow-2xl relative font-sans overflow-x-hidden">
       {/* Top Status Bar (Simulated or hidden in standalone) */}
       {statusBarMode !== 'hidden' && (
         <TopStatusBar

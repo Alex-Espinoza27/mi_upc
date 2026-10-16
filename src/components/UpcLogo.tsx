@@ -30,3 +30,18 @@ export const UpcHeaderLogo: React.FC = () => {
     </div>
   );
 };
+
+/**
+ * Icono de chincheta roja / pin redondo (chupetín) para Campus Villa
+ */
+export const UpcPinIcon: React.FC<{ className?: string }> = ({ className = "w-4 h-4" }) => {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      {/* Esfera roja (chupetín) con brillo sutil */}
+      <circle cx="12" cy="7" r="5.5" fill="#D3101E" />
+      <circle cx="10.2" cy="5.2" r="1.6" fill="#FFA5AC" />
+      {/* Aguja / vástago hacia abajo */}
+      <path d="M12 12.5V20.5" stroke="#717D96" strokeWidth="2.2" strokeLinecap="round" />
+    </svg>
+  );
+};
