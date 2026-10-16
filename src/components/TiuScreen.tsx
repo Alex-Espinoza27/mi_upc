@@ -38,22 +38,40 @@ export const TiuScreen: React.FC<TiuScreenProps> = ({ profile, onBack }) => {
   return (
     <div className="relative min-h-screen w-full bg-[#EFF3FC] flex flex-col justify-between max-w-md mx-auto overflow-hidden select-none">
       {/* 
-        Nubes vectoriales pastel idénticas a IMAGEN 1.jpeg 
+        NUBES REALES EXTRAÍDAS DE IMAGEN 1 EN SUS POSICIONES EXACTAS
       */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
-        {/* Nube izquierda superior */}
-        <div className="absolute top-[370px] -left-6 w-24 h-10 bg-[#C5D0F6]/80 rounded-full blur-[0.5px]" />
-        {/* Nube izquierda media */}
-        <div className="absolute top-[430px] left-8 w-20 h-7 bg-[#C5D0F6]/75 rounded-full" />
-        
-        {/* Nube derecha superior */}
-        <div className="absolute top-[410px] right-8 w-16 h-6 bg-[#C5D0F6]/70 rounded-full" />
-        {/* Nube derecha media */}
-        <div className="absolute top-[460px] -right-4 w-20 h-8 bg-[#C5D0F6]/80 rounded-full" />
+        {/* 1. Nube izquierda superior (asomando por el borde izquierdo) */}
+        <img
+          src={`${import.meta.env.BASE_URL}assets/cloud.png`}
+          alt="Nube"
+          className="absolute top-[41.5%] -left-5 w-16 opacity-90 select-none pointer-events-none"
+        />
+
+        {/* 2. Nube izquierda principal (al lado del cuello/hombro, encima de la tarjeta) */}
+        <img
+          src={`${import.meta.env.BASE_URL}assets/cloud.png`}
+          alt="Nube"
+          className="absolute top-[48.5%] left-[13%] w-[90px] opacity-95 select-none pointer-events-none"
+        />
+
+        {/* 3. Nube derecha superior (a la altura de la barbilla/oreja) */}
+        <img
+          src={`${import.meta.env.BASE_URL}assets/cloud.png`}
+          alt="Nube"
+          className="absolute top-[46.2%] right-[11%] w-[52px] opacity-90 select-none pointer-events-none"
+        />
+
+        {/* 4. Nube derecha inferior (más pequeña, cerca del hombro) */}
+        <img
+          src={`${import.meta.env.BASE_URL}assets/cloud.png`}
+          alt="Nube"
+          className="absolute top-[52%] right-[22%] w-[36px] opacity-85 select-none pointer-events-none"
+        />
 
         {/* 
-          Imagen de campus (SIN rostro) colocada detrás del card blanco,
-          emergiendo desde el nivel del card hacia arriba 
+          Imagen de campus (edificio con cúpula y llama UPC) 
+          ubicada detrás de la tarjeta blanca 
         */}
         <div className="absolute bottom-[230px] left-0 right-0 h-[220px] flex items-end justify-center opacity-85">
           <img
@@ -113,8 +131,9 @@ export const TiuScreen: React.FC<TiuScreenProps> = ({ profile, onBack }) => {
 
         {/* 
           Card blanco de datos del alumno:
-          - Elevado más arriba (sin mt-auto) con bordes redondeados y espacio inferior
-          - Nombre en letras grandes y elegantes
+          - Elevado equilibradamente con bordes redondeados y espacio inferior
+          - Nombre en letras grandes, estilizadas y delgadas
+          - Textos oscuros en "Código de alumno", "ID Banner", "Campus Villa" con margen mínimo a sus valores
         */}
         <div className="w-full bg-[#FFFFFF] rounded-[24px] p-[22px] pt-5 shadow-[0_4px_16px_rgba(30,40,80,0.08)] border border-[#D6D9E2]/40 text-center space-y-2 mt-1 mb-7 z-20">
           {/* Nombre: grande, alargado y con grosor fino */}
