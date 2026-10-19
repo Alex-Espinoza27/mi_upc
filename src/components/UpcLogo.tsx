@@ -26,13 +26,13 @@ export const UpcHeaderLogo: React.FC = () => {
 };
 
 /**
- * Icono oficial 3D de chincheta roja para Campus Villa extraído del APK (pinned.png)
+ * Icono oficial marcador (chupetín/pin rojo) para Campus Villa extraído del APK (profile_marker.png)
  */
 export const UpcPinIcon: React.FC<{ className?: string }> = ({ className = "w-4 h-4" }) => {
   return (
     <img
-      src={`${import.meta.env.BASE_URL}assets/pinned.png`}
-      alt="Ubicación"
+      src={`${import.meta.env.BASE_URL}assets/profile_marker.png`}
+      alt="Campus"
       className={`${className} object-contain select-none`}
     />
   );

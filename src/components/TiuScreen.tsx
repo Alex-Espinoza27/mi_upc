@@ -103,7 +103,7 @@ export const TiuScreen: React.FC<TiuScreenProps> = ({ profile, onBack }) => {
           - Nombre en tipografía oficial Solano Gothic, grande y estilizada
           - Textos contrastados con márgenes mínimos
         */}
-        <div className="w-full bg-[#FFFFFF] rounded-[24px] p-[22px] pt-5 shadow-[0_4px_16px_rgba(30,40,80,0.08)] border border-[#D6D9E2]/40 text-center space-y-2 mt-2 mb-20 z-20">
+        <div className="w-full bg-[#FFFFFF] rounded-[24px] p-[22px] pt-5 shadow-[0_4px_16px_rgba(30,40,80,0.08)] border border-[#D6D9E2]/40 text-center space-y-2 mt-2 mb-10 z-20">
           {/* Nombre oficial del estudiante */}
           <h2 className="display font-normal text-[32px] text-[#E40A18] uppercase leading-tight tracking-wide">
             {profile.maskedName}
