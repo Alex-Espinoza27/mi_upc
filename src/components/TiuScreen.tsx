@@ -39,13 +39,14 @@ export const TiuScreen: React.FC<TiuScreenProps> = ({ profile, onBack }) => {
     <div className="relative min-h-screen w-full bg-[#EFF3FC] flex flex-col justify-between max-w-md mx-auto overflow-hidden select-none">
       {/* 
         FONDO OFICIAL ANIMADO EXTRAÍDO DEL APK (nube.gif)
-        Contiene el campus oficial UPC, siluetas de la ciudad y las nubes originales animadas en bucle
+        - Desplazado hacia abajo con top-[80px] para despejar el header y permitir encuadre natural
+        - Posicionado con object-top para mostrar la perspectiva completa (-zoom)
       */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
+      <div className="absolute inset-x-0 bottom-0 top-[80px] pointer-events-none overflow-hidden z-0">
         <img
           src={`${import.meta.env.BASE_URL}assets/nube.gif`}
           alt="Fondo Oficial TIU Animado"
-          className="w-full h-full object-cover select-none"
+          className="w-full h-full object-cover object-top select-none"
         />
       </div>
 
