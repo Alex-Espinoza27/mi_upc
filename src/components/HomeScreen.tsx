@@ -58,7 +58,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ profile }) => {
           </div>
           <div className="relative w-28 h-20 flex-shrink-0">
             <img
-              src={`${import.meta.env.BASE_URL}assets/students-3d.png`}
+              src={profile.homeBannerUrl || `${import.meta.env.BASE_URL}assets/students-3d.png`}
               alt="Estudiantes UPC"
               className="w-full h-full object-contain"
               onError={(e) => {

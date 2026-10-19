@@ -10,9 +10,22 @@ import { PresentationToolbar } from './components/PresentationToolbar';
 import { PROFILES } from './data/mockData';
 import { StudentProfile, TabType } from './types';
 
+const STORAGE_KEY = 'mi_upc_student_profile_v2';
+
 export function App() {
   const [profiles, setProfiles] = useState<StudentProfile[]>(PROFILES);
-  const [currentProfile, setCurrentProfile] = useState<StudentProfile>(PROFILES[0]);
+  const [currentProfile, setCurrentProfile] = useState<StudentProfile>(() => {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        return { ...PROFILES[0], ...parsed };
+      }
+    } catch (e) {
+      console.warn('Error reading stored profile', e);
+    }
+    return PROFILES[0];
+  });
   const [currentTab, setCurrentTab] = useState<TabType>('inicio');
   const [isTiuOpen, setIsTiuOpen] = useState<boolean>(false);
   const [statusBarMode, setStatusBarMode] = useState<'android' | 'ios' | 'hidden'>('android');
@@ -20,6 +33,18 @@ export function App() {
   const handleUpdateProfile = (updated: StudentProfile) => {
     setCurrentProfile(updated);
     setProfiles((prev) => prev.map((p) => (p.id === updated.id ? updated : p)));
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));
+    } catch (e) {
+      console.warn('Error saving profile to localStorage', e);
+    }
+  };
+
+  const handleResetProfile = () => {
+    try {
+      localStorage.removeItem(STORAGE_KEY);
+    } catch (e) {}
+    setCurrentProfile(PROFILES[0]);
   };
 
   const handleLogout = () => {
@@ -38,13 +63,19 @@ export function App() {
         />
       )}
 
-      {/* Floating AI Presentation Toolbar (Oculto en Perfil y TIU Virtual) */}
+      {/* Floating AI Presentation Toolbar (Administrable en todas las pantallas) */}
       <PresentationToolbar
-        visible={!isTiuOpen && currentTab !== 'perfil'}
+        visible={true}
         currentProfile={currentProfile}
         profiles={profiles}
-        onSelectProfile={(p) => setCurrentProfile(p)}
+        onSelectProfile={(p) => {
+          setCurrentProfile(p);
+          try {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(p));
+          } catch (e) {}
+        }}
         onUpdateProfile={handleUpdateProfile}
+        onResetProfile={handleResetProfile}
         statusBarMode={statusBarMode}
         onStatusBarModeChange={setStatusBarMode}
       />

@@ -8,6 +8,8 @@ export interface StudentProfile {
   campus: string;
   email: string;
   avatarUrl: string;
+  homeBannerUrl?: string;
+  tiuBgUrl?: string;
 }
 
 export type TabType = 'inicio' | 'academico' | 'ayuda' | 'perfil';
