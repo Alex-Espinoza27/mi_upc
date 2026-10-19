@@ -42,7 +42,7 @@ export const TiuScreen: React.FC<TiuScreenProps> = ({ profile, onBack }) => {
         - Desplazado hacia abajo con top-[80px] para despejar el header y permitir encuadre natural
         - Posicionado con object-top para mostrar la perspectiva completa (-zoom)
       */}
-      <div className="absolute inset-x-0 bottom-0 top-[80px] pointer-events-none overflow-hidden z-0">
+      <div className="absolute inset-x-0 bottom-0 top-[150px] pointer-events-none overflow-hidden z-0">
         <img
           src={`${import.meta.env.BASE_URL}assets/nube.gif`}
           alt="Fondo Oficial TIU Animado"
