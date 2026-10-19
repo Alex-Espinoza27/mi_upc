@@ -24,3 +24,4 @@ dist-ssr
 *.sw?
 MI_UPC_APK_DESCOMPRIMIDO/
 *.gif
+!public/assets/*.gif
