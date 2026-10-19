@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Copy, Check, ChevronRight, IdCard, CheckCircle2 } from 'lucide-react';
 import { UpcPinIcon } from './UpcLogo';
+import { StudentAvatar } from './StudentAvatar';
 import { StudentProfile } from '../types';
 
 interface ProfileScreenProps {
@@ -44,11 +45,10 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({ profile, onOpenTiu
 
       {/* Profile Photo: Solo la foto en modo círculo SIN borde ni margen blanco */}
       <div className="flex justify-center -mt-[48px] relative z-10 mb-2.5">
-        <div className="w-[94px] h-[94px] rounded-full overflow-hidden shadow-[0_4px_14px_rgba(30,40,80,0.15)] bg-transparent">
-          <img
+        <div className="w-[94px] h-[94px] rounded-full overflow-hidden shadow-[0_4px_14px_rgba(30,40,80,0.15)] bg-white">
+          <StudentAvatar
             src={profile.avatarUrl}
             alt={profile.name}
-            className="w-full h-full object-cover"
           />
         </div>
       </div>

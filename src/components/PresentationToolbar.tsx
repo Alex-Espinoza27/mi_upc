@@ -20,6 +20,7 @@ import {
   Palette
 } from 'lucide-react';
 import { StudentProfile } from '../types';
+import { StudentAvatar } from './StudentAvatar';
 
 interface PresentationToolbarProps {
   visible?: boolean;
@@ -272,11 +273,12 @@ export const PresentationToolbar: React.FC<PresentationToolbarProps> = ({
                           : 'border-gray-200 hover:bg-gray-50'
                       }`}
                     >
-                      <img
-                        src={p.avatarUrl}
-                        alt={p.name}
-                        className="w-7 h-7 rounded-full object-cover flex-shrink-0"
-                      />
+                      <div className="w-7 h-7 rounded-full overflow-hidden flex-shrink-0 bg-white shadow-xs">
+                        <StudentAvatar
+                          src={p.avatarUrl}
+                          alt={p.name}
+                        />
+                      </div>
                       <div className="truncate">
                         <p className="font-bold text-[11px] text-gray-900 truncate leading-tight">
                           {p.name}
@@ -477,10 +479,9 @@ export const PresentationToolbar: React.FC<PresentationToolbarProps> = ({
 
                     <div className="flex items-center gap-3">
                       <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-[#E40A18] shadow-sm bg-white flex-shrink-0">
-                        <img
+                        <StudentAvatar
                           src={editAvatar}
                           alt="Foto Alumno"
-                          className="w-full h-full object-cover"
                         />
                       </div>
                       <div className="flex-1 space-y-1.5">
@@ -510,7 +511,7 @@ export const PresentationToolbar: React.FC<PresentationToolbarProps> = ({
                       <p className="text-[10px] font-medium text-gray-600 mb-1">
                         O elegir foto de muestra:
                       </p>
-                      <div className="flex gap-2">
+                      <div className="flex flex-wrap gap-2">
                         {profiles.map((p) => (
                           <button
                             key={p.id}
@@ -522,10 +523,27 @@ export const PresentationToolbar: React.FC<PresentationToolbarProps> = ({
                                 : 'border-gray-200 bg-white text-gray-700 hover:bg-gray-50'
                             }`}
                           >
-                            <img src={p.avatarUrl} alt={p.name} className="w-4 h-4 rounded-full object-cover" />
+                            <div className="w-4 h-4 rounded-full overflow-hidden bg-white">
+                              <StudentAvatar src={p.avatarUrl} alt={p.name} />
+                            </div>
                             <span>{p.name}</span>
                           </button>
                         ))}
+                        <button
+                          type="button"
+                          onClick={() => setEditAvatar('')}
+                          className={`flex items-center gap-1.5 py-1 px-2 rounded-lg border text-[10px] cursor-pointer transition-colors ${
+                            !editAvatar
+                              ? 'border-[#E40A18] bg-red-50 text-[#E40A18] font-bold'
+                              : 'border-gray-200 bg-white text-gray-700 hover:bg-gray-50'
+                          }`}
+                          title="Usar icono convencional de persona en color plomo"
+                        >
+                          <div className="w-4 h-4 rounded-full overflow-hidden bg-white">
+                            <StudentAvatar src="" alt="Sin foto" />
+                          </div>
+                          <span>Sin foto (Plomo)</span>
+                        </button>
                       </div>
                     </div>
                   </div>

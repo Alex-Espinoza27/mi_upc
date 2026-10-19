@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft } from 'lucide-react';
 import { UpcPinIcon } from './UpcLogo';
+import { StudentAvatar } from './StudentAvatar';
 import { StudentProfile } from '../types';
 
 interface TiuScreenProps {
@@ -88,11 +89,10 @@ export const TiuScreen: React.FC<TiuScreenProps> = ({ profile, onBack }) => {
           - Ocupa TODO el círculo sin bordes ni insignias
         */}
         <div className="relative my-2 z-20">
-          <div className="w-[135px] h-[135px] rounded-full overflow-hidden shadow-[0_8px_24px_rgba(30,40,80,0.18)] bg-transparent">
-            <img
+          <div className="w-[135px] h-[135px] rounded-full overflow-hidden shadow-[0_8px_24px_rgba(30,40,80,0.18)] bg-white">
+            <StudentAvatar
               src={profile.avatarUrl}
               alt={profile.name}
-              className="w-full h-full object-cover"
             />
           </div>
         </div>
