@@ -64,26 +64,29 @@ export const TiuScreen: React.FC<TiuScreenProps> = ({ profile, onBack }) => {
       </div>
 
       {/* Componente CredentialClock, Foto y Tarjeta del Alumno */}
-      <div className="relative z-20 flex-1 flex flex-col items-center justify-center px-[18px] pt-1">
-        {/* Reloj de seguridad en vivo (CredentialClock) */}
-        <div className="w-full max-w-[270px] bg-[#E1E5FE] rounded-2xl py-3 px-6 text-center shadow-sm border border-[#D0D7FC] mt-1 mb-2">
-          <div className="font-clock font-medium text-[36px] text-[#000000] tracking-wider leading-none">
-            {timeStr || '22:14:44'}
+      <div className="relative z-20 flex-1 flex flex-col items-center justify-between px-[18px] pt-0 pb-1">
+        {/* Reloj y Fecha subidos más arriba */}
+        <div className="w-full flex flex-col items-center -mt-2">
+          {/* Reloj de seguridad en vivo con fondo oficial #dbd9ff */}
+          <div className="w-full max-w-[270px] bg-[#dbd9ff] rounded-2xl py-3 px-6 text-center shadow-sm border border-[#c8c5ff]">
+            <div className="font-clock font-medium text-[36px] text-[#000000] tracking-wider leading-none">
+              {timeStr || '22:14:44'}
+            </div>
           </div>
-        </div>
 
-        {/* Fecha con margen natural hacia la foto */}
-        <p className="text-[#6D7687] text-[15px] font-medium tracking-normal mt-1 mb-6">
-          {dateStr || 'Lunes, 12 Oct 2026'}
-        </p>
+          {/* Fecha debajo del reloj */}
+          <p className="text-[#6D7687] text-[15px] font-medium tracking-normal mt-1.5 mb-3">
+            {dateStr || 'Lunes, 12 Oct 2026'}
+          </p>
+        </div>
 
         {/* 
           Foto del alumno:
-          - Agrandada a 126px x 126px con márgenes equilibrados
+          - Agrandada a 126px x 126px
           - z-20 sobre el fondo animado nube.gif
           - Ocupa TODO el círculo sin bordes ni insignias
         */}
-        <div className="relative mt-2 mb-6 z-20">
+        <div className="relative my-2 z-20">
           <div className="w-[126px] h-[126px] rounded-full overflow-hidden shadow-[0_8px_24px_rgba(30,40,80,0.18)] bg-transparent">
             <img
               src={profile.avatarUrl}
@@ -95,11 +98,11 @@ export const TiuScreen: React.FC<TiuScreenProps> = ({ profile, onBack }) => {
 
         {/* 
           Card blanco de datos del alumno (StudentCredentialContent):
-          - Posición equilibrada con bordes redondeados y espacio inferior
+          - Posicionado unos píxeles más abajo
           - Nombre en tipografía oficial Solano Gothic, grande y estilizada
           - Textos contrastados con márgenes mínimos
         */}
-        <div className="w-full bg-[#FFFFFF] rounded-[24px] p-[22px] pt-5 shadow-[0_4px_16px_rgba(30,40,80,0.08)] border border-[#D6D9E2]/40 text-center space-y-2 mt-1 mb-7 z-20">
+        <div className="w-full bg-[#FFFFFF] rounded-[24px] p-[22px] pt-5 shadow-[0_4px_16px_rgba(30,40,80,0.08)] border border-[#D6D9E2]/40 text-center space-y-2 mt-2 mb-3.5 z-20">
           {/* Nombre oficial del estudiante */}
           <h2 className="display font-normal text-[32px] text-[#E40A18] uppercase leading-tight tracking-wide">
             {profile.maskedName}
