@@ -112,3 +112,28 @@
 .safe-bottom {
   padding-bottom: max(16px, env(safe-area-inset-bottom));
 }
+
+/* Animación continua de nubes de derecha a izquierda */
+@keyframes cloudDriftRightToLeft {
+  0% {
+    transform: translateX(460px);
+  }
+  100% {
+    transform: translateX(-160px);
+  }
+}
+
+.animate-cloud-slow {
+  animation: cloudDriftRightToLeft 24s linear infinite;
+  will-change: transform;
+}
+
+.animate-cloud-medium {
+  animation: cloudDriftRightToLeft 18s linear infinite;
+  will-change: transform;
+}
+
+.animate-cloud-fast {
+  animation: cloudDriftRightToLeft 13s linear infinite;
+  will-change: transform;
+}

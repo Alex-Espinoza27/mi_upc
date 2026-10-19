@@ -38,42 +38,10 @@ export const TiuScreen: React.FC<TiuScreenProps> = ({ profile, onBack }) => {
   return (
     <div className="relative min-h-screen w-full bg-[#EFF3FC] flex flex-col justify-between max-w-md mx-auto overflow-hidden select-none">
       {/* 
-        NUBES REALES EXTRAÍDAS DE IMAGEN 1 EN SUS POSICIONES EXACTAS
+        FONDO DE EDIFICIO UPC (NIVEL INFERIOR)
       */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
-        {/* 1. Nube izquierda superior (asomando por el borde izquierdo) */}
-        <img
-          src={`${import.meta.env.BASE_URL}assets/cloud.png`}
-          alt="Nube"
-          className="absolute top-[41.5%] -left-5 w-16 opacity-90 select-none pointer-events-none"
-        />
-
-        {/* 2. Nube izquierda principal (al lado del cuello/hombro, encima de la tarjeta) */}
-        <img
-          src={`${import.meta.env.BASE_URL}assets/cloud.png`}
-          alt="Nube"
-          className="absolute top-[48.5%] left-[13%] w-[90px] opacity-95 select-none pointer-events-none"
-        />
-
-        {/* 3. Nube derecha superior (a la altura de la barbilla/oreja) */}
-        <img
-          src={`${import.meta.env.BASE_URL}assets/cloud.png`}
-          alt="Nube"
-          className="absolute top-[46.2%] right-[11%] w-[52px] opacity-90 select-none pointer-events-none"
-        />
-
-        {/* 4. Nube derecha inferior (más pequeña, cerca del hombro) */}
-        <img
-          src={`${import.meta.env.BASE_URL}assets/cloud.png`}
-          alt="Nube"
-          className="absolute top-[52%] right-[22%] w-[36px] opacity-85 select-none pointer-events-none"
-        />
-
-        {/* 
-          Imagen de campus (edificio con cúpula y llama UPC) 
-          ubicada detrás de la tarjeta blanca 
-        */}
-        <div className="absolute bottom-[230px] left-0 right-0 h-[220px] flex items-end justify-center opacity-85">
+        <div className="absolute bottom-[210px] left-0 right-0 h-[220px] flex items-end justify-center opacity-85">
           <img
             src={`${import.meta.env.BASE_URL}assets/campus-bg.png`}
             alt="Campus UPC"
@@ -85,8 +53,74 @@ export const TiuScreen: React.FC<TiuScreenProps> = ({ profile, onBack }) => {
         </div>
       </div>
 
+      {/* 
+        NUBES EN MOVIMIENTO CONTINUO DE DERECHA A IZQUIERDA
+        Ubicadas detrás de la foto circular (z-20) y por encima del card (z-10)
+      */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden z-20">
+        {/* Nube mediana 1 (desplazándose suavemente) */}
+        <div
+          className="absolute top-[44%] animate-cloud-slow"
+          style={{ animationDelay: '0s' }}
+        >
+          <img
+            src={`${import.meta.env.BASE_URL}assets/cloud.png`}
+            alt="Nube"
+            className="w-[86px] opacity-95 select-none"
+          />
+        </div>
+
+        {/* Nube mediana-pequeña 2 */}
+        <div
+          className="absolute top-[48%] animate-cloud-medium"
+          style={{ animationDelay: '-8s' }}
+        >
+          <img
+            src={`${import.meta.env.BASE_URL}assets/cloud.png`}
+            alt="Nube"
+            className="w-[68px] opacity-90 select-none"
+          />
+        </div>
+
+        {/* Nube pequeña 3 */}
+        <div
+          className="absolute top-[38%] animate-cloud-fast"
+          style={{ animationDelay: '-4s' }}
+        >
+          <img
+            src={`${import.meta.env.BASE_URL}assets/cloud.png`}
+            alt="Nube"
+            className="w-[44px] opacity-85 select-none"
+          />
+        </div>
+
+        {/* Nube pequeña 4 (rozando la parte superior del card) */}
+        <div
+          className="absolute top-[52%] animate-cloud-slow"
+          style={{ animationDelay: '-16s' }}
+        >
+          <img
+            src={`${import.meta.env.BASE_URL}assets/cloud.png`}
+            alt="Nube"
+            className="w-[38px] opacity-90 select-none"
+          />
+        </div>
+
+        {/* Nube pequeña 5 */}
+        <div
+          className="absolute top-[42%] animate-cloud-medium"
+          style={{ animationDelay: '-12s' }}
+        >
+          <img
+            src={`${import.meta.env.BASE_URL}assets/cloud.png`}
+            alt="Nube"
+            className="w-[50px] opacity-85 select-none"
+          />
+        </div>
+      </div>
+
       {/* Top Header con botón de volver circular */}
-      <div className="relative z-20 px-[18px] pt-4 pb-2 flex items-center gap-4">
+      <div className="relative z-30 px-[18px] pt-4 pb-2 flex items-center gap-4">
         <button
           onClick={onBack}
           className="w-10 h-10 rounded-full bg-white shadow-[0_2px_8px_rgba(30,40,80,0.10)] flex items-center justify-center text-[#E40A18] hover:bg-gray-50 active:scale-95 transition-all cursor-pointer"
@@ -99,8 +133,8 @@ export const TiuScreen: React.FC<TiuScreenProps> = ({ profile, onBack }) => {
         </h1>
       </div>
 
-      {/* Reloj y Alumno */}
-      <div className="relative z-20 flex-1 flex flex-col items-center justify-center px-[18px] pt-1">
+      {/* Reloj, Alumno y Card */}
+      <div className="relative z-30 flex-1 flex flex-col items-center justify-center px-[18px] pt-1">
         {/* Digital Clock Box: color lila/lavanda suave, números con grosor moderado/limpio */}
         <div className="w-full max-w-[270px] bg-[#E1E5FE] rounded-2xl py-3 px-6 text-center shadow-sm border border-[#D0D7FC] mt-1 mb-2">
           <div className="font-clock font-medium text-[36px] text-[#000000] tracking-wider leading-none">
@@ -115,12 +149,12 @@ export const TiuScreen: React.FC<TiuScreenProps> = ({ profile, onBack }) => {
 
         {/* 
           Foto del alumno:
-          - Ocupa TODO el círculo
-          - SIN bordes blancos ni márgenes
-          - SIN icono de check verde
+          - Agrandada a 126px x 126px con mayores márgenes en el eje Y
+          - z-30 para quedar por ENCIMA de las nubes en movimiento
+          - Ocupa TODO el círculo sin bordes ni márgenes blancos
         */}
-        <div className="relative mb-4 z-20">
-          <div className="w-[108px] h-[108px] rounded-full overflow-hidden shadow-[0_8px_24px_rgba(30,40,80,0.18)] bg-transparent">
+        <div className="relative mt-2 mb-6 z-30">
+          <div className="w-[126px] h-[126px] rounded-full overflow-hidden shadow-[0_8px_24px_rgba(30,40,80,0.18)] bg-transparent">
             <img
               src={profile.avatarUrl}
               alt={profile.name}
@@ -131,11 +165,11 @@ export const TiuScreen: React.FC<TiuScreenProps> = ({ profile, onBack }) => {
 
         {/* 
           Card blanco de datos del alumno:
-          - Elevado equilibradamente con bordes redondeados y espacio inferior
+          - Posición equilibrada con bordes redondeados
           - Nombre en letras grandes, estilizadas y delgadas
           - Textos oscuros en "Código de alumno", "ID Banner", "Campus Villa" con margen mínimo a sus valores
         */}
-        <div className="w-full bg-[#FFFFFF] rounded-[24px] p-[22px] pt-5 shadow-[0_4px_16px_rgba(30,40,80,0.08)] border border-[#D6D9E2]/40 text-center space-y-2 mt-1 mb-7 z-20">
+        <div className="w-full bg-[#FFFFFF] rounded-[24px] p-[22px] pt-5 shadow-[0_4px_16px_rgba(30,40,80,0.08)] border border-[#D6D9E2]/40 text-center space-y-2 mt-1 mb-7 z-10">
           {/* Nombre: grande, alargado y con grosor fino */}
           <h2 className="display font-normal text-[32px] text-[#E40A18] uppercase leading-tight tracking-wide">
             {profile.maskedName}
@@ -171,7 +205,7 @@ export const TiuScreen: React.FC<TiuScreenProps> = ({ profile, onBack }) => {
       </div>
 
       {/* Indicador inferior iOS Home */}
-      <div className="relative z-20 w-full flex justify-center pb-2 pt-1">
+      <div className="relative z-30 w-full flex justify-center pb-2 pt-1">
         <div className="w-36 h-1 bg-[#000000]/60 rounded-full" />
       </div>
     </div>
