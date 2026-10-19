@@ -3,6 +3,7 @@ import { Smartphone, Users, Settings, X, Sparkles, Download, CheckCircle, Chevro
 import { StudentProfile } from '../types';
 
 interface PresentationToolbarProps {
+  visible?: boolean;
   currentProfile: StudentProfile;
   profiles: StudentProfile[];
   onSelectProfile: (profile: StudentProfile) => void;
@@ -12,6 +13,7 @@ interface PresentationToolbarProps {
 }
 
 export const PresentationToolbar: React.FC<PresentationToolbarProps> = ({
+  visible = true,
   currentProfile,
   profiles,
   onSelectProfile,
@@ -81,8 +83,8 @@ export const PresentationToolbar: React.FC<PresentationToolbarProps> = ({
 
   return (
     <>
-      {/* Floating Presentation Pill */}
-      {!isOpen && (
+      {/* Floating Presentation Pill (Oculto en Perfil y TIU) */}
+      {!isOpen && visible && (
         <div className="fixed top-2 right-2 z-50">
           <button
             onClick={() => setIsOpen(true)}

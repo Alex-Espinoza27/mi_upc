@@ -38,8 +38,9 @@ export function App() {
         />
       )}
 
-      {/* Floating AI Presentation Toolbar */}
+      {/* Floating AI Presentation Toolbar (Oculto en Perfil y TIU Virtual) */}
       <PresentationToolbar
+        visible={!isTiuOpen && currentTab !== 'perfil'}
         currentProfile={currentProfile}
         profiles={profiles}
         onSelectProfile={(p) => setCurrentProfile(p)}
