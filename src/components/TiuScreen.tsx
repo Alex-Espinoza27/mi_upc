@@ -64,7 +64,7 @@ export const TiuScreen: React.FC<TiuScreenProps> = ({ profile, onBack }) => {
       </div>
 
       {/* Componente CredentialClock, Foto y Tarjeta del Alumno */}
-      <div className="relative z-20 flex-1 flex flex-col items-center justify-between px-[18px] pt-0 pb-1">
+      <div className="relative z-20 flex-1 flex flex-col items-center justify-between px-[30px] pt-15 pb-1">
         {/* Reloj y Fecha subidos más arriba */}
         <div className="w-full flex flex-col items-center -mt-2">
           {/* Reloj de seguridad en vivo con fondo oficial #dbd9ff */}
@@ -87,7 +87,7 @@ export const TiuScreen: React.FC<TiuScreenProps> = ({ profile, onBack }) => {
           - Ocupa TODO el círculo sin bordes ni insignias
         */}
         <div className="relative my-2 z-20">
-          <div className="w-[126px] h-[126px] rounded-full overflow-hidden shadow-[0_8px_24px_rgba(30,40,80,0.18)] bg-transparent">
+          <div className="w-[135px] h-[135px] rounded-full overflow-hidden shadow-[0_8px_24px_rgba(30,40,80,0.18)] bg-transparent">
             <img
               src={profile.avatarUrl}
               alt={profile.name}
@@ -102,7 +102,7 @@ export const TiuScreen: React.FC<TiuScreenProps> = ({ profile, onBack }) => {
           - Nombre en tipografía oficial Solano Gothic, grande y estilizada
           - Textos contrastados con márgenes mínimos
         */}
-        <div className="w-full bg-[#FFFFFF] rounded-[24px] p-[22px] pt-5 shadow-[0_4px_16px_rgba(30,40,80,0.08)] border border-[#D6D9E2]/40 text-center space-y-2 mt-2 mb-3.5 z-20">
+        <div className="w-full bg-[#FFFFFF] rounded-[24px] p-[22px] pt-5 shadow-[0_4px_16px_rgba(30,40,80,0.08)] border border-[#D6D9E2]/40 text-center space-y-2 mt-2 mb-20 z-20">
           {/* Nombre oficial del estudiante */}
           <h2 className="display font-normal text-[32px] text-[#E40A18] uppercase leading-tight tracking-wide">
             {profile.maskedName}
