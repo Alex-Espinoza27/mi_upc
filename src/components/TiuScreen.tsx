@@ -36,7 +36,7 @@ export const TiuScreen: React.FC<TiuScreenProps> = ({ profile, onBack }) => {
   }, []);
 
   return (
-    <div className="relative min-h-screen w-full bg-[#EFF3FC] flex flex-col justify-between max-w-md mx-auto overflow-hidden select-none">
+    <div className="relative min-h-screen w-full bg-[#f9faff] flex flex-col justify-between max-w-md mx-auto overflow-hidden select-none">
       {/* 
         FONDO OFICIAL ANIMADO EXTRAÍDO DEL APK (nube.gif)
         - Desplazado hacia abajo con top-[80px] para despejar el header y permitir encuadre natural
