@@ -138,7 +138,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({ profile }) => {
               <div className="flex items-center gap-2.5">
                 <div className="w-[34px] h-[34px] flex items-center justify-center flex-shrink-0">
                   <img
-                    src={`${import.meta.env.BASE_URL}assets/books-icon.png`}
+                    src={`${import.meta.env.BASE_URL}assets/books.png`}
                     alt="Cursos"
                     className="w-full h-full object-contain"
                     onError={(e) => {

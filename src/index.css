@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'SolanoGothic';
+  src: url('/fonts/UpcSolano.ttf') format('truetype'),
+       url('/fonts/SolanoGothicMVB-Bd.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
 :root {
   --red-primary: #E40A18;
   --red-text: #D3101E;
@@ -23,7 +31,7 @@
 }
 
 @theme {
-  --font-display: 'Bebas Neue', 'Oswald', sans-serif;
+  --font-display: 'SolanoGothic', 'Bebas Neue', 'Oswald', sans-serif;
   --font-body: 'Roboto', sans-serif;
   --font-mono: 'Roboto Mono', monospace;
   
@@ -66,7 +74,7 @@
 }
 
 .display {
-  font-family: 'Bebas Neue', 'Oswald', sans-serif;
+  font-family: 'SolanoGothic', 'Bebas Neue', 'Oswald', sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.01em;
 }
