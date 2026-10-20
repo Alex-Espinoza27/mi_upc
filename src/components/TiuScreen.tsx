@@ -40,10 +40,10 @@ export const TiuScreen: React.FC<TiuScreenProps> = ({ profile, onBack }) => {
     <div className="relative min-h-screen w-full bg-[#f9faff] flex flex-col justify-between max-w-md mx-auto overflow-hidden select-none">
       {/* 
         FONDO OFICIAL ANIMADO EXTRAÍDO DEL APK (nube.gif)
-        - Desplazado hacia abajo con top-[80px] para despejar el header y permitir encuadre natural
+        - Desplazado hacia abajo con top-[155px] para despejar el header y permitir encuadre natural
         - Posicionado con object-top para mostrar la perspectiva completa (-zoom)
       */}
-      <div className="absolute inset-x-0 bottom-0 top-[150px] pointer-events-none overflow-hidden z-0">
+      <div className="absolute inset-x-0 bottom-0 top-[158px] pointer-events-none overflow-hidden z-0">
         <img
           src={profile.tiuBgUrl || `${import.meta.env.BASE_URL}assets/nube.gif`}
           alt="Fondo Oficial TIU Animado"

@@ -211,32 +211,43 @@ export const PresentationToolbar: React.FC<PresentationToolbarProps> = ({
         </div>
       )}
 
-      {/* Drawer Modal */}
+      {/* Drawer Modal Responsive para Móvil y Desktop */}
       {isOpen && (
-        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 animate-fadeIn">
-          <div className="bg-white w-full max-w-lg rounded-t-3xl sm:rounded-3xl p-5 shadow-2xl max-h-[92vh] flex flex-col">
-            {/* Header */}
-            <div className="flex items-center justify-between pb-3 border-b border-gray-100 flex-shrink-0">
-              <div className="flex items-center gap-2.5">
-                <div className="w-9 h-9 rounded-xl bg-red-50 flex items-center justify-center text-[#E40A18] border border-red-100 shadow-sm">
-                  <Sparkles className="w-5 h-5" />
+        <div
+          onClick={() => setIsOpen(false)}
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex flex-col justify-end sm:justify-center items-center p-2.5 sm:p-4 pt-10 sm:pt-6 pb-2.5 sm:pb-6 animate-fadeIn"
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="bg-white w-full max-w-lg rounded-3xl p-4 sm:p-5 shadow-2xl max-h-[82dvh] sm:max-h-[85vh] flex flex-col min-h-0 overflow-hidden relative"
+          >
+            {/* Indicador de arrastre táctil para móvil */}
+            <div className="w-10 h-1 bg-gray-300 rounded-full mx-auto -mt-1 mb-2 sm:hidden flex-shrink-0" />
+
+            {/* Header con botón de cierre siempre visible y accesible */}
+            <div className="flex items-center justify-between pb-2.5 border-b border-gray-100 flex-shrink-0">
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 rounded-xl bg-red-50 flex items-center justify-center text-[#E40A18] border border-red-100 shadow-sm flex-shrink-0">
+                  <Sparkles className="w-4 h-4" />
                 </div>
-                <div>
-                  <h3 className="font-bold text-gray-900 text-sm flex items-center gap-1.5">
-                    Panel de Administración IA
-                    <span className="text-[10px] bg-red-100 text-[#E40A18] font-bold px-1.5 py-0.5 rounded-full">
+                <div className="min-w-0">
+                  <h3 className="font-bold text-gray-900 text-xs sm:text-sm flex items-center gap-1.5 truncate">
+                    <span>Panel de Administración IA</span>
+                    <span className="text-[9px] bg-red-100 text-[#E40A18] font-bold px-1.5 py-0.5 rounded-full">
                       En Vivo
                     </span>
                   </h3>
-                  <p className="text-[11px] text-gray-500">Personaliza datos, fotos y fondos al instante</p>
+                  <p className="text-[10px] text-gray-500 truncate">Personaliza datos, fotos y fondos</p>
                 </div>
               </div>
               <button
+                type="button"
                 onClick={() => setIsOpen(false)}
-                className="p-1.5 rounded-full text-gray-400 hover:text-gray-700 hover:bg-gray-100 cursor-pointer transition-colors"
-                aria-label="Cerrar"
+                className="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 active:scale-90 text-gray-600 flex items-center justify-center cursor-pointer transition-all flex-shrink-0 shadow-xs"
+                aria-label="Cerrar modal"
+                title="Cerrar"
               >
-                <X className="w-5 h-5" />
+                <X className="w-4 h-4 stroke-[2.5]" />
               </button>
             </div>
 
@@ -331,8 +342,8 @@ export const PresentationToolbar: React.FC<PresentationToolbarProps> = ({
               </button>
             </div>
 
-            {/* Tab Contents */}
-            <div className="flex-1 overflow-y-auto py-3 space-y-3.5 pr-1">
+            {/* Tab Contents con min-h-0 para permitir scroll adecuado en móvil */}
+            <div className="flex-1 min-h-0 overflow-y-auto py-2.5 space-y-3 pr-1 overscroll-contain">
               {/* TAB 1: DATOS */}
               {activeTab === 'datos' && (
                 <div className="space-y-3 text-xs">
